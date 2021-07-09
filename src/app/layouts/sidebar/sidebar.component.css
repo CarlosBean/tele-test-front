@@ -1,0 +1,29 @@
+:host {
+    --white: #fff;
+    --primary: #00a1ff;
+}
+
+.sidebar-title {
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.sidebar-item {
+    position: relative;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.active-option {
+    border-left: 6px solid var(--primary);
+    padding-left: 20px !important;
+}
