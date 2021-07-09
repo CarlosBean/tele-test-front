@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+  }
+  
+  .sidenav {
+    box-shadow: var(--shr-1);
+    z-index: 100;
+  }
+  
+  .main {
+    margin-top: 1px;
+    background-color: var(--gray-200);
+    overflow-y: auto;
+    padding: 20px;
+  }
