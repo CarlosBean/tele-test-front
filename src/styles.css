@@ -1,4 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --white: #fff;
+    --gray-100: #f8f9fa;
+    --gray-200: #ecf0f1;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #b4bcc2;
+    --gray-600: #95a5a6;
+    --gray-700: #7b8a8b;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    --black: #000;
+
+    --blue: #2C3E50;
+    --red: #E74C3C;
+    --yellow: #F39C12;
+    --green: #18BC9C;
+    --cyan: #3498DB;
+
+    --primary: var(--blue);
+    --secondary: var(--gray-600);
+    --success: var(--green);
+    --info: var(--cyan);
+    --warning: var(--yellow);
+    --danger: var(--red);
+    --light: var(--gray-200);
+    --dark: var(--gray-700);
+    --outline: var(--gray-300);
+    --shadow-panel: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* START override boostrap styles for use material styles on table */
+.table > :not(:last-child) > :last-child > * {
+    border-bottom-color: inherit;
+}
+
+.table > thead {
+    vertical-align: inherit;
+}
+thead, tbody, tfoot, tr, td, th {
+    border-color: inherit;
+    border-style: inherit;
+    border-width: inherit;
+}
+
+.table > tbody {
+    vertical-align: middle;
+}
+
+.table > thead {
+    vertical-align: middle;
+}
+/* END override boostrap styles for use material styles on table */
+
+.module-title { 
+    position: absolute;
+    left: 0;
+    top: 10px;
+    margin: 0;
+    width: 250px;
+    z-index: 1;
+    padding-left: 20px;
+  }
