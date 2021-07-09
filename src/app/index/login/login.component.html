@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row align-items-center vh-100">
+
+        <div class="d-none d-sm-block col-12 col-sm-6">
+            <img class="img-fluid" src="../../../assets/images/login_svg.svg" alt="login_2_svg" srcset="">
+        </div>
+        <div class="col-12 col-sm-6">
+
+            <h1 class="mb-3">Sign in</h1>
+            <p class="light-text mb-5">Welcome back</p>
+            <form name="loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field class="w-100 mb-3" floatLabel="always">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter your email" formControlName="email" autocomplete="off" />
+
+                    <mat-error *ngIf="loginForm.get('email').errors?.required">
+                        Email is <strong>required</strong>
+                    </mat-error>
+
+                    <mat-error *ngIf="loginForm.get('email').errors?.email">
+                        Invalid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-100 mb-3" floatLabel="always">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+                        formControlName="password" autocomplete="off" />
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <span class="material-icons">{{ hide ? 'visibility_off' : 'visibility' }}</span>
+                    </button>
+
+                    <mat-error *ngIf="loginForm.get('password').errors?.required">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="d-flex justify-content-center">
+                    <button mat-stroked-button color="primary" class="me-2">Log in</button>
+                    <button mat-stroked-button disabled>
+                        Create an account
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
