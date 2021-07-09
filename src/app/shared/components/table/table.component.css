@@ -1,0 +1,30 @@
+.table {
+    width: 100%;
+    overflow: auto;
+    padding-left: 24px;
+}
+
+::ng-deep.mat-footer-row,
+tr.mat-row {
+    height: 70px;
+}
+
+.shadow-table {
+    box-shadow: var(--shadow-panel) !important;
+}
+
+.mat-menu-trigger {
+    padding: 0;
+}
+
+.mat-header-cell {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.button-menu {
+    display: block;
+    margin: auto;
+    text-transform: capitalize;
+    padding: 0;
+}
