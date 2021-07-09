@@ -5,17 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 
 import { LoginComponent } from './index/login/login.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { HomeComponent } from './layouts/home/home.component';
+import { JwtInterceptor } from './index/jwt.interceptor';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    SidebarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,9 @@ import { LoginComponent } from './index/login/login.component';
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
