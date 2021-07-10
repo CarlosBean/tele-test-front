@@ -1,6 +1,9 @@
 :host {
     --white: #fff;
     --primary: #00a1ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar-title {

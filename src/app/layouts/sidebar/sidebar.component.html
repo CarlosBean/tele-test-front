@@ -1,8 +1,12 @@
-<h5 class="sidebar-title p-3">TelePerformance</h5>
+<div>
+    <h5 class="sidebar-title p-3">TelePerformance</h5>
 
-<div class="sidebar-menu">
-    <li class="sidebar-item d-flex" *ngFor="let option of options" [routerLink]="option.route"
-        routerLinkActive="active-option">
-        <span>{{ option.title }}</span>
-    </li>
+    <div class="sidebar-menu">
+        <li class="sidebar-item d-flex" *ngFor="let option of options" [routerLink]="option.route"
+            routerLinkActive="active-option">
+            <span>{{ option.title }}</span>
+        </li>
+    </div>
 </div>
+
+<button mat-raised-button color="accent" class="mx-5 mb-3" (click)="logout()">Sign Out</button>
