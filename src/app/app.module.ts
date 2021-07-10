@@ -14,6 +14,7 @@ import { LoginComponent } from './index/login/login.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { HomeComponent } from './layouts/home/home.component';
 import { JwtInterceptor } from './index/jwt.interceptor';
+import { HasRoleDirective } from './shared/directives/has-role.directive';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { JwtInterceptor } from './index/jwt.interceptor';
     LoginComponent,
     SidebarComponent,
     HomeComponent,
+    HasRoleDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,37 @@
-<div>
-    <h5 class="sidebar-title p-3">TelePerformance</h5>
+<ng-container *ngIf="!mobile">
+    <div>
+        <h5 class="sidebar-title p-3">TelePerformance</h5>
 
-    <div class="sidebar-menu">
-        <li class="sidebar-item d-flex" *ngFor="let option of options" [routerLink]="option.route"
-            routerLinkActive="active-option">
-            <span>{{ option.title }}</span>
-        </li>
+        <div class="sidebar-menu">
+            <ng-container *ngFor="let option of options">
+                <li class="sidebar-item d-flex" *appHasRole="option.role" [routerLink]="option.route"
+                    routerLinkActive="active-option">
+                    <span>{{ option.title }}</span>
+                </li>
+            </ng-container>
+        </div>
     </div>
-</div>
 
-<button mat-raised-button color="accent" class="mx-5 mb-3" (click)="logout()">Sign Out</button>
+    <button mat-raised-button color="accent" class="mx-5 mb-3" (click)="logout()">Sign
+        Out</button>
+</ng-container>
+
+<ng-container *ngIf="mobile">
+    <button mat-mini-fab color="accent" mat-icon-button [matMenuTriggerFor]="menu" aria-label="responsive-menu"
+        class="mx-3">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let option of options">
+
+            <button mat-menu-item *appHasRole="option.role" [routerLink]="option.route"
+                routerLinkActive="active-option-mobile">
+                <span>{{ option.title }}</span>
+            </button>
+        </ng-container>
+
+        <button mat-menu-item color="accent" (click)="logout()">
+            <span>Sign Out</span>
+        </button>
+    </mat-menu>
+</ng-container>
