@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { IUser } from '../shared/models/user';
-import { map, catchError } from 'rxjs/operators';
+import { IUser, User } from '../shared/models/user';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,18 +28,13 @@ export class AccountService {
     );
   }
 
-  renewToken() {
-    const url = environment.API_URL + '/login/newtoken' + '?token=' + this.token;
-    return this.http.get(url).pipe(
-      map((res: any) => {
-        this.saveStorage(res.token);
-      }),
-      catchError((err: any) => {
-        this.logout();
-        // Swal.fire('Error on Session', 'Token cannot be renewed', 'error');
-        return new Observable<any>();
-      })
-    );
+  patchUser(data: IUser) {
+    this.user = this.user || new User('', '');
+    this.user.name = data.name;
+    this.user.email = data.email;
+    this.user.google = data.google;
+    this.user._id = data._id;
+    this.user.role = data.role;
   }
 
   isLogged() {
@@ -49,12 +44,13 @@ export class AccountService {
   loadStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
-      this.user = this.parseJwt(this.token).user;
+      this.user = this.decodeToken(this.token).user;
     }
   }
 
   saveStorage(token: string) {
     localStorage.setItem('token', token);
+    this.patchUser(this.decodeToken(token).user);
     this.token = token;
   }
 
@@ -64,7 +60,7 @@ export class AccountService {
     this.router.navigate(['/login']);
   }
 
-  parseJwt(token: string) {
+  decodeToken(token: string) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
