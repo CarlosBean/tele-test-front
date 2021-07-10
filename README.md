@@ -1,27 +1,12 @@
 # TeleTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
+Live demo in https://tele-test-front.vercel.app
 
-## Development server
+Actually this project is consuming an API hosted in Heroku https://teleperformance-test.herokuapp.com, code source in https://github.com/CarlosBean/tele-test-back
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+For access to the dashboard, there are two users with different roles:
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| email           | password | role       |
+|-----------------|----------|------------|
+| admin@gmail.com | 123456   | ADMIN_USER |
+| user@gmail.com  | 123456   | USER_ROLE  |
