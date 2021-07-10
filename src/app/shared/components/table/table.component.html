@@ -1,5 +1,5 @@
-<mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
 <div class="shadow-table">
+    <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
 
     <table #table class="table" mat-table matSort [dataSource]="dataSource">
 
@@ -11,7 +11,7 @@
 
             <td mat-cell *matCellDef="let element" [hidden]="column === '_id'">
                 <!-- cell data -->
-                <span *ngIf="column !== 'action'">{{ formatText(element[column]) }}</span>
+                <span *ngIf="column !== 'action'">{{ element[column] | formatText }}</span>
 
                 <!-- menu options -->
                 <div *ngIf="column === 'action'">
