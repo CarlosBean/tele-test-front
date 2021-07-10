@@ -5,7 +5,7 @@ import { ProductService } from '../product.service';
   selector: 'app-product-list',
   template: `
     <div class="main-container">
-      <h4 class="module-title">Product List</h4>
+      <h4 class="module-title">Product List (User)</h4>
       <app-table
         [moduleName]="'product'"
         [elementData]="elementData"

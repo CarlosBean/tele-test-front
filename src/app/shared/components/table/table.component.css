@@ -2,6 +2,11 @@
     width: 100%;
     overflow: auto;
     padding-left: 24px;
+    min-width: 500px;
+}
+
+.mat-paginator {
+    min-width: 500px;
 }
 
 ::ng-deep.mat-footer-row,
@@ -28,3 +33,9 @@ tr.mat-row {
     text-transform: capitalize;
     padding: 0;
 }
+
+@media (max-width: 768px) {
+    .shadow-table {
+        box-shadow: none !important;
+    }
+  }

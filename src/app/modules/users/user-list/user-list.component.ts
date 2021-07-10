@@ -1,13 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-list',
   template: `
     <div class="main-container">
-      <h4 class="module-title">Lista de Clientes</h4>
+      <h4 class="module-title">User List (Admin)</h4>
       <app-table
         [moduleName]="'user'"
         [elementData]="elementData"

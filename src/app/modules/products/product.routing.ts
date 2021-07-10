@@ -6,7 +6,7 @@ const routes: Routes = [
     {
         path: '',
         component: ProductListComponent,
-        data: { title: 'Products' }
+        data: { title: 'Product List' }
     }
 ];
 

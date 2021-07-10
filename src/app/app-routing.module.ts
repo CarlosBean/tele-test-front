@@ -7,7 +7,7 @@ import { LoginComponent } from './index/login/login.component';
 import { HomeComponent } from './layouts/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',

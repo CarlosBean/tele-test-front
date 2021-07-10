@@ -13,9 +13,7 @@ export class JwtInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         const token = this.accountService.token;
-        console.log('WORKS?', token);
         if (this.accountService.token) {
-            console.log('AHHHHH', this.accountService.token);
             const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
             req = req.clone({ headers });
         }

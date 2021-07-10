@@ -30,3 +30,9 @@
     border-left: 6px solid var(--primary);
     padding-left: 20px !important;
 }
+
+@media (max-width: 768px) {
+    :host {
+        justify-content: center;
+    }
+  }
