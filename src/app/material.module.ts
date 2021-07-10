@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // NgModule that includes all Material modules.
 @NgModule({
@@ -26,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
         MatPaginatorModule,
         MatSortModule,
         MatMenuModule,
+        MatProgressSpinnerModule,
     ]
 })
 export class MaterialModule { }

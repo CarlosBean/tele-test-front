@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   hide = true;
+  isLoading = false;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]]
@@ -31,14 +32,21 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
     this.accountService.login(this.loginForm.value).subscribe(
       (res: any) => {
+        this.isLoading = false;
         if (res.success) {
           console.log('login successful');
-          this.router.navigateByUrl('/dashboard');
+          if (res.user.role === 'USER_ROLE') {
+            this.router.navigateByUrl('/dashboard/products');
+          } else if (res.user.role === 'ADMIN_ROLE') {
+            this.router.navigateByUrl('/dashboard/users');
+          }
         }
       },
       (err: any) => {
+        this.isLoading = false;
         alert('The credentials are invalid, please try again with correct information');
       }
     );

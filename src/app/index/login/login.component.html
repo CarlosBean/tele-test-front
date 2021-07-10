@@ -6,7 +6,10 @@
         </div>
         <div class="col-12 col-sm-6">
 
-            <h1 class="mb-3">Sign in</h1>
+            <div class="d-flex">
+                <h1 class="mb-3 me-3">Sign in</h1>
+                <mat-spinner *ngIf="isLoading" [diameter]="40" color="accent"></mat-spinner>
+            </div>
             <p class="light-text mb-5">Welcome back</p>
             <form name="loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
                 <mat-form-field class="w-100 mb-3" floatLabel="always">
