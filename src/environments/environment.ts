@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://rest-node19.herokuapp.com'
+  API_URL: 'https://teleperformance-test.herokuapp.com'
 };
 
 /*
