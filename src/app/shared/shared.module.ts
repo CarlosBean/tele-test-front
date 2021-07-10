@@ -7,7 +7,7 @@ import { FormatTextPipe } from './pipes/format-text.pipe';
 @NgModule({
   declarations: [
     TableComponent,
-    FormatTextPipe
+    FormatTextPipe,
   ],
   imports: [
     CommonModule,
