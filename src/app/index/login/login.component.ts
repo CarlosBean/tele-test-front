@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.invalid) {
-      alert('Oops, an error has ocurred, There is an error with the credentials');
+      Swal.fire(
+        'Oops, an error has ocurred',
+        'There is an error with the credentials',
+        'error'
+      );
       return;
     }
 
@@ -47,7 +52,11 @@ export class LoginComponent implements OnInit {
       },
       (err: any) => {
         this.isLoading = false;
-        alert('The credentials are invalid, please try again with correct information');
+        Swal.fire(
+          'Oops, an error has ocurred',
+          'The credentials are invalid, please try again with correct information',
+          'error'
+        );
       }
     );
   }
