@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { IUser, User } from '../shared/models/user';
 import { map } from 'rxjs/operators';
@@ -14,6 +14,7 @@ export class AccountService {
   token: string;
   user: IUser;
   API_URL = environment.API_URL;
+  private authenticationState = new Subject<any>();
 
   constructor(private http: HttpClient, private router: Router) {
     this.loadStorage();
@@ -23,6 +24,7 @@ export class AccountService {
     return this.http.post(environment.API_URL + '/login', user).pipe(
       map((res: any) => {
         this.saveStorage(res.data.token);
+        res.user = this.decodeToken(res.data.token).user;
         return res;
       })
     );
@@ -49,9 +51,10 @@ export class AccountService {
   }
 
   saveStorage(token: string) {
+    this.token = token;
     localStorage.setItem('token', token);
     this.patchUser(this.decodeToken(token).user);
-    this.token = token;
+    this.authenticationState.next(this.user);
   }
 
   logout() {
@@ -69,4 +72,12 @@ export class AccountService {
 
     return JSON.parse(jsonPayload);
   };
+
+  hasAnyAuthority(authorities: string[]): boolean {
+    return this.user && this.user.role ? authorities.includes(this.user.role) : false;
+  }
+
+  getAuthenticationState(): Observable<any> {
+    return this.authenticationState.asObservable();
+  }
 }
